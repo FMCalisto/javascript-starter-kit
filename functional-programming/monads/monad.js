@@ -4,6 +4,7 @@ const Bacon = require('baconjs')
 const stream = new Bacon.Bus()
 
 stream
+  .map(word => word.toUpperCase())
   .onValue(word => console.log(word))
 
 // Streams are functors
