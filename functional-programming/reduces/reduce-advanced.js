@@ -1,4 +1,6 @@
-import fs from 'fs';
+let fs = require('fs');
+
+
 
 var output = fs.readFileSync('data.txt', 'utf8')
     .trim()
