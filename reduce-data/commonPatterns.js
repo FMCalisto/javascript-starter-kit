@@ -3,11 +3,19 @@
 
 var data = [1, 2, 3];
 var dataBig = [0, 1, 2, 3, 4, 5, 6, 8, 9];
+var dataHuge = [];
+
+// POPULATE DATA
+
+for (var i = 0; i < 1000000; i++) {
+  dataHuge[i] = i;
+}
 
 // INITIAL VALUES
 
-var initialValue = [];
-var evensInitialValue = [];
+var initValue = [];
+var evensInitValue = [];
+var initDataHuge = [];
 
 // FUNCTIONS
 
@@ -39,11 +47,13 @@ var odds = (item) => {
 
 // TRANSFORMATIONS
 
-var doubleReduced = data.reduce(reducer, initialValue);
+var doubleReduced = data.reduce(reducer, initValue);
 var doubleMapped = data.map(double);
-var evensReduced = dataBig.reduce(evensReducer, evensInitialValue);
+var evensReduced = dataBig.reduce(evensReducer, evensInitValue);
 var evensFilteredDoubled = dataBig.filter(evens).map(double);
 var oddsFiltered = dataBig.filter(odds);
+var filterMappedDataHuge = dataHuge.filter(evens).map(double);
+var reducedDataHuge = dataHuge.reduce(evensReducer, initDataHuge);
 
 // LOGS
 
@@ -52,5 +62,15 @@ console.log("Double Mapped: ", doubleMapped);
 console.log("Evens Reduced: ", evensReduced);
 console.log("Evens Filtered Doubled: ", evensFilteredDoubled);
 console.log("Odds Filtered: ", oddsFiltered);
+
+// TIME COUNTERS
+
+console.time('dataHuge');
+console.log("Huge Data Filter Mapped: ", filterMappedDataHuge);
+console.timeEnd('dataHuge');
+
+console.time('dataHugeReduce');
+console.log("Huge Data Reduced: ", reducedDataHuge);
+console.timeEnd('dataHugeReduce');
 
 
