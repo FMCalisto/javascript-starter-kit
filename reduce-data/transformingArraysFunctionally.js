@@ -1,11 +1,16 @@
-var data = [10, 20, 5];
+var data = [
+  {num: 10},
+  {num: 20},
+  {num: 5}
+];
 
 var reducer = function(accumulator, item) {
 
   console.log("I am an accumulator: ", accumulator);
   console.log("I am an item: ", item);
+  console.log("I am an item number: ", item.num);
 
-  return accumulator + item;
+  return accumulator + item.num;
 }
 
 var initialValue = 0;
