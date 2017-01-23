@@ -17,16 +17,20 @@ var reducer = (accumulator, value) => {
   return accumulator;
 }
 
-var mapped = (item) => {
+var double = (item) => {
   return item * 2;
 }
 
-var evens = (accumulator, value) => {
+var evensReducer = (accumulator, value) => {
   if (value % 2 === 0) {
     accumulator.push(value);
   }
 
   return accumulator;
+}
+
+var evens = (item) => {
+  return (item % 2 === 0);
 }
 
 var odds = (item) => {
@@ -36,8 +40,9 @@ var odds = (item) => {
 // TRANSFORMATIONS
 
 var doubleReduced = data.reduce(reducer, initialValue);
-var doubleMapped = data.map(mapped);
-var evensReduced = dataBig.reduce(evens, evensInitialValue);
+var doubleMapped = data.map(double);
+var evensReduced = dataBig.reduce(evensReducer, evensInitialValue);
+var evensFilteredDoubled = dataBig.filter(evens).map(double);
 var oddsFiltered = dataBig.filter(odds);
 
 // LOGS
@@ -45,6 +50,7 @@ var oddsFiltered = dataBig.filter(odds);
 console.log("Double Reduced: ", doubleReduced);
 console.log("Double Mapped: ", doubleMapped);
 console.log("Evens Reduced: ", evensReduced);
+console.log("Evens Filtered Doubled: ", evensFilteredDoubled);
 console.log("Odds Filtered: ", oddsFiltered);
 
 
